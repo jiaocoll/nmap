@@ -492,6 +492,15 @@ func WithTargets(targets ...string) Option {
 	}
 }
 
+// WithTargetsSlice sets the target of a scanner.
+func WithTargetsSlice(targets []string) func(*Scanner) {
+	return func(s *Scanner) {
+		for _,target := range targets{
+			s.args = append(s.args, target)
+		}
+	}
+}
+
 // WithTargetExclusion sets the excluded targets of a scanner.
 func WithTargetExclusion(target string) Option {
 	return func(s *Scanner) {
